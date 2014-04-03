@@ -1,0 +1,21 @@
+<h1>Rotten Mangoes - Admin User View</h1>
+
+<%= link_to "Submit a movie", new_movie_path %>
+<hr>
+
+<% @users.each do |user| %>
+ 
+  <h2><%= link_to user.email, admin_user_path(user) %></h2> 
+  <h3><%= user.firstname %></h3>
+  <h3><%= user.lastname %></h3>
+  <h3><% if user.admin %>
+        <%= puts 'Admin User' %>
+      <% else %>
+        <%= puts 'Regular User' %>
+      <% end %>
+  </h3>
+  <h3><%= user.created_at %></h3>
+  <h3><%= user.updated_at %></h3>
+  
+  <hr>
+<% end %>

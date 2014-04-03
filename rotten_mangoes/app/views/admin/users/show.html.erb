@@ -1,0 +1,15 @@
+<h1>Users#show</h1>
+<!-- <p>Find me in app/views/movies/show.html.erb</p> -->
+
+<h2><%= @users.email %> (<%= link_to "edit", edit_admin_user(@users) %>, <%= link_to "delete", user_path(@users), method: :delete, confirm: "You sure?" %>)</h2>
+ <h2><%= link_to user.email, admin_user_path(user) %></h2> 
+  <h3><%= user.firstname %></h3>
+  <h3><%= user.lastname %></h3>
+  <h3><% if user.admin %>
+        <%= puts 'Admin User' %>
+      <% else %>
+        <%= puts 'Regular User' %>
+      <% end %>
+  </h3>
+  <h3><%= user.created_at %></h3>
+  <h3><%= user.updated_at %></h3>

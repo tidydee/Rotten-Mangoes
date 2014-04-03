@@ -6,7 +6,7 @@
 
 <h2>Submit a movie!</h2>
 
-<%= form_for @movie do |f| %>
+<%= form_for @movie, :html => {:multipart => true} do |f| %>
   <div>
     <%= f.label "title"  %><br>
     <%= f.text_field "title"  %><br>
@@ -26,6 +26,10 @@
   <div>
     <%= f.label "poster_image_url" %><br>
     <%= f.text_field "poster_image_url" %>
+  </div>
+  <div>
+    <%= f.label "upload_an_image" %><br>
+    <%= f.file_field "image" %>
   </div>
   <div>
     <%= f.label "description" %><br>
