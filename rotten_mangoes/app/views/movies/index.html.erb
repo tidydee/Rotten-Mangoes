@@ -10,8 +10,8 @@
 <% @movies.each do |movie| %>
   <%= link_to image_tag(movie.image), movie_path(movie) %>  
   <h2><%= link_to movie.title, movie_path(movie) %></h2>
-  <h3><%= movie.release_date %></h3>
+  <h3><%= formatted_date(movie.release_date) %></h3>
   <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-  <p><%= movie.description %></p>
+  <p><%= movie.description %>&nbsp<%= movie.review_average %>/10</p>
   <hr>
 <% end %>
