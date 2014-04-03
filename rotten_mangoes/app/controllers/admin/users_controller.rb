@@ -1,4 +1,15 @@
 class Admin::UsersController < ApplicationController
+  before_filter :authorize?
+
+  def authorize?
+    if current_user.admin
+      index
+    else
+      flash[:error] = "Admin access only!"
+      redirect_to movies_path
+    end
+  end
+
 
   def index
     @users = User.all

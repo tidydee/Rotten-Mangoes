@@ -5,17 +5,14 @@
 
 <% @users.each do |user| %>
  
-  <h2><%= link_to user.email, admin_user_path(user) %></h2> 
-  <h3><%= user.firstname %></h3>
-  <h3><%= user.lastname %></h3>
-  <h3><% if user.admin %>
-        <%= puts 'Admin User' %>
-      <% else %>
-        <%= puts 'Regular User' %>
-      <% end %>
+  <h2>Email: <%= link_to user.email, admin_user_path(user) %></h2> 
+  <h3>First name: <%= user.firstname %></h3>
+  <h3>Last name: <%= user.lastname %></h3>
+  <h3>Admin user: <%= user.admin  %>
+       
   </h3>
-  <h3><%= user.created_at %></h3>
-  <h3><%= user.updated_at %></h3>
+  <p>Create at: <%= user.created_at %></p>
+ 
   
   <hr>
 <% end %>
