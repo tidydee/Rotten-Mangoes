@@ -13,7 +13,8 @@ class Admin::UsersController < ApplicationController
   end
 
   def edit
-    @users = User.find(params[:id])
+    @admin_user = User.find(params[:id])
+    # @users = User.find(params[:id])
   end
 
   def create

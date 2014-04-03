@@ -1,5 +1,8 @@
 <h2>Edit Users Page.</h2>
-<%= form_for @user, :html => {:multipart => true} do |f| %>
+
+<%= link_to "Back to this user",  admin_user_path(@users) %>
+<h2>Edit this user</h2>
+<%= form_for @admin_user do |f| %>
   <div>
     <%= f.label "email" %><br>
     <%= f.text_field "email" %>
