@@ -1,12 +1,6 @@
 RottenMangoes::Application.routes.draw do
  
-  # get "reviews/new"
-  # get "reviews/create"
-  # get "sessions/new"
-  # get "sessions/create"
-  # get "users/new"
-  # get "users/create"
-  
+
  resources :movies do
   resources :reviews, only: [:new, :create]
  end
@@ -16,7 +10,11 @@ RottenMangoes::Application.routes.draw do
  end
 
  resources :users, only: [:new,:create]
+ # For :sessions, it should be singular control name too, cause you are only dealing with one session.
+ # The ':destroy' will only destroy the session ':id', which will be pertaining that session.
  resources :sessions, only: [:new, :create, :destroy]
+
+ resource :password, only: [:edit, :update] #singular 'resource', cause you don't want to make use of an ':id' to 'edit' & 'update'
 
  root to: 'movies#index'
 

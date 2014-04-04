@@ -1,19 +1,40 @@
 
-<h1>Rotten Mangoes</h1>
+<div class="row">
+  <div class="col-md-8">  
+    <h1>Rotten Mangoes</h1>
 
-<%= link_to "Submit a movie", new_movie_path %><br>
-<%= link_to "User Admin Panel", admin_users_path %>
-<hr>
+    <%= link_to "Submit a movie", new_movie_path %><br>
+    <%= link_to "User Admin Panel", admin_users_path %>
+    <hr>
+  </div>
+  <div class="col-md-4">
+    <%= form_tag({controller: "movies", action: "index"}, method: "get") do %>
+      <%= label_tag(:query, "Search movie by:") %>
+      Title: <%= text_field_tag(:query_title) %>&nbsp <br>
 
+      Director: <%= text_field_tag(:query_director) %> <br>
 
+      Duration:  <select  <%= text_field_tag(:query_minutes) %> >
+                  <option value="nil">N/A</option>
+                  <option value="1">Under 90 minutes</option>
+                  <option value="2">Between 90 and 120 minutes</option>
+                  <option value="3">Over 120 minutes</option>
+                </select> <br>
+
+      <%= submit_tag("Search") %>
+    <% end %>
+  </div>
+</div>
 
 <hr>
 
 <% @movies.each do |movie| %>
-  <%= link_to image_tag(movie.image), movie_path(movie) %>  
-  <h2><%= link_to movie.title, movie_path(movie) %></h2>
-  <h3><%= formatted_date(movie.release_date) %></h3>
-  <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-  <p><%= movie.description %>&nbsp<%= movie.review_average %>/10</p>
+  <div class="row">
+    <%= link_to image_tag(movie.image), movie_path(movie) %>  
+    <h2><%= link_to movie.title, movie_path(movie) %></h2>
+    <h3><%= formatted_date(movie.release_date) %></h3>
+    <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
+    <p><%= movie.description %>&nbsp<%= movie.review_average %>/10</p>
+  </div>
   <hr>
 <% end %>
