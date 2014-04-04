@@ -42,6 +42,8 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'tux'
 gem 'pry'
+gem "twitter-bootstrap-rails"
+gem 'kaminari'
 
 # Use unicorn as the app server
 # gem 'unicorn'

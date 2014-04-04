@@ -12,7 +12,7 @@ class Admin::UsersController < ApplicationController
 
 
   def index
-    @users = User.all
+    @users = User.order(params[:sort]).page(params[:page]).per(10)
   end
 
   def show
