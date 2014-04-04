@@ -1,7 +1,22 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.all
+    case
+    when params[:query_title].present?
+      @movies = Movie.where("title like ?", "%#{params[:query_title]}%")
+    when params[:query_director].present?
+      @movies = Movie.where("director like ?", "%#{params[:query_director]}%")
+    else
+      @movies = Movie.all
+    
+    end
   end
+
+
+    
+  #   else
+  #     @movies = Movie.where("title like ?", "%#{params[:query]}%")
+  #   end
+  # end
 
   def show
     @movie = Movie.find(params[:id])

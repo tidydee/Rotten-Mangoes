@@ -5,8 +5,13 @@
 <%= link_to "User Admin Panel", admin_users_path %>
 <hr>
 
-<%= form_tag("/search", method: "get") do %>
-  Form contents
+<%= form_tag({controller: "movies", action: "index"}, method: "get") do %>
+  <%= label_tag(:query, "Search movie by:") %>
+  Title: <%= text_field_tag(:query_title) %>&nbsp
+
+  Director: <%= text_field_tag(:query_director) %>
+
+  <%= submit_tag("Search") %>
 <% end %>
 
 <hr>
