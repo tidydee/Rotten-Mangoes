@@ -1,11 +1,14 @@
-<!-- <h1>Movies#index</h1>
-<p>Find me in app/views/movies/index.html.erb</p>
- -->
 
 <h1>Rotten Mangoes</h1>
 
 <%= link_to "Submit a movie", new_movie_path %><br>
 <%= link_to "User Admin Panel", admin_users_path %>
+<hr>
+
+<%= form_tag("/search", method: "get") do %>
+  Form contents
+<% end %>
+
 <hr>
 
 <% @movies.each do |movie| %>
