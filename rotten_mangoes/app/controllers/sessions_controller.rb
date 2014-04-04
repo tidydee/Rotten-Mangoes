@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to movies_path, notice: "Welcome back, #{user.firstname}!"
     else
+      flash.now[:error] = "Invalid Username / Password!"
       render :new
     end
   end

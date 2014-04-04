@@ -1,0 +1,9 @@
+<h1>Users#show</h1>
+<!-- <p>Find me in app/views/movies/show.html.erb</p> -->
+<%= link_to "Back to all users", admin_users_path %>
+<hr>
+<h2>User Email: <span class="lead"><%= @users.email %> (<%= link_to "delete", admin_user_path(@users), method: :delete, confirm: "You sure?" %>)</span></h2>
+  <h3>First name: <span class="lead"><%= @users.firstname %></span></h3>
+  <h3>Last name: <span class="lead"><%= @users.lastname %></span></h3>
+  <h3>Admin: <span class="lead"><%= @users.admin %></span></h3>
+  <h3>Created at: <span class="lead"><%= @users.created_at %></span></h3>

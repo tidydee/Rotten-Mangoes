@@ -1,4 +1,6 @@
 class Movie < ActiveRecord::Base
+  
+  mount_uploader :image, ImageUploader
 
   has_many :reviews
 
@@ -12,9 +14,6 @@ class Movie < ActiveRecord::Base
     numericality: { only_integer: true }
 
   validates :description,
-    presence: true
-
-  validates :poster_image_url,
     presence: true
 
   validates :release_date,
@@ -34,5 +33,4 @@ class Movie < ActiveRecord::Base
       errors.add(:release_date, "should probably be in the future") if release_date < Date.today
     end
   end
-
 end

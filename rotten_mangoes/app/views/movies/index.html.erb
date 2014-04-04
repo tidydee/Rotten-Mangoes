@@ -4,11 +4,12 @@
 
 <h1>Rotten Mangoes</h1>
 
-<%= link_to "Submit a movie", new_movie_path %>
+<%= link_to "Submit a movie", new_movie_path %><br>
+<%= link_to "User Admin Panel", admin_users_path %>
 <hr>
 
 <% @movies.each do |movie| %>
-  <%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>  
+  <%= link_to image_tag(movie.image), movie_path(movie) %>  
   <h2><%= link_to movie.title, movie_path(movie) %></h2>
   <h3><%= formatted_date(movie.release_date) %></h3>
   <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
