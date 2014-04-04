@@ -12,7 +12,7 @@ RottenMangoes::Application.routes.draw do
  resources :users, only: [:new,:create]
  # For :sessions, it should be singular control name too, cause you are only dealing with one session.
  # The ':destroy' will only destroy the session ':id', which will be pertaining that session.
- resources :sessions, only: [:new, :create, :destroy]
+ resource :session, only: [:new, :create, :destroy]
 
  resource :password, only: [:edit, :update] #singular 'resource', cause you don't want to make use of an ':id' to 'edit' & 'update'
 
