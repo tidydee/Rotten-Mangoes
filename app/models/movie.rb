@@ -21,6 +21,16 @@ class Movie < ActiveRecord::Base
 
   validate :release_date_is_in_the_future
 
+  scope :search_by_title, -> (title) do
+    where("title like ?","%#{title}%")
+  end
+
+  scope :search_by_director, -> (director) do
+    where("director like ?", "%#{director}%")
+  end
+
+
+
   def review_average
     return nil if reviews.empty?
     reviews.sum(:rating_out_of_ten)/reviews.size

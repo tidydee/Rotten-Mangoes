@@ -1,24 +1,34 @@
 class MoviesController < ApplicationController
   def index
-    case
-    when params[:query_title].present?
-      @movies = Movie.where("title like ?", "%#{params[:query_title]}%")
-    when params[:query_director].present?
-      @movies = Movie.where("director like ?", "%#{params[:query_director]}%")
-    when params[:query_minutes].present?
-      case params[:query_minutes]
-      when "1"
-        @movies = Movie.where("runtime_in_minutes < ?", 90) 
-      when "2"  
-        @movies = Movie.where("runtime_in_minutes between ? and ?", 90, 120) 
-      when
-        @movies = Movie.where("runtime_in_minutes > ?", 120)  
-      end
-      # @movies = Movie.where("runtime_in_minutes like ?", "%#{params[:query_minutes]}%")  
-    else
-      @movies = Movie.all
+    @movies = Movie.all
+    @movies = @movies.search_by_title(params[:query_title])
+    @movies = @movies.search_by_director(params[:query_director])
+    @movies = @movies.where("director like ?","%#{params[:query_director]}%") if params[:query_director].present?
+    # @movies = @movies.where("runtime_in_minutes < ?",90)
+
+    # where('published_at < = ?', Time.now)
+    # @published_posts = Post.all :conditions => {['published_at <= ?', Time.now]}
+
+    # case
+    # when params[:query_title].present?
+    #   @movies = Movie.where("title like ?", "%#{params[:query_title]}%")
+    # when params[:query_director].present?
+    #   @movies = Movie.where("director like ?", "%#{params[:query_director]}%")
     
-    end
+    # when params[:query_minutes].present?
+    #   case params[:query_minutes]
+    #   when "1"
+    #     @movies = Movie.where("runtime_in_minutes < ?", 90) 
+    #   when "2"  
+    #     @movies = Movie.where("runtime_in_minutes between ? and ?", 90, 120) 
+    #   when "3"
+    #     @movies = Movie.where("runtime_in_minutes > ?", 120)  
+    #   end
+    #   # @movies = Movie.where("runtime_in_minutes like ?", "%#{params[:query_minutes]}%")  
+    # else
+    #   @movies = Movie.all
+    
+    # end
   end
 
 
