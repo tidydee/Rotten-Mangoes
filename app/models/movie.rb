@@ -29,6 +29,17 @@ class Movie < ActiveRecord::Base
     where("director like ?", "%#{director}%")
   end
 
+  scope :search_by_runtime, -> (time) do
+    case time
+    when "1"
+         @movies = Movie.where("runtime_in_minutes < ?", 90) 
+    when "2"  
+         @movies = Movie.where("runtime_in_minutes between ? and ?", 90, 120) 
+    when "3"
+         @movies = Movie.where("runtime_in_minutes > ?", 120)  
+    end
+  end
+
 
 
   def review_average
